@@ -9,9 +9,9 @@ End Date: 5/1/2026
 
 **Roles:**   
 Implementation Lead: Dallin Yauney  
-Verification Lead: Spencer Peck 
+Verification Lead: Spencer Peck  
 Communications Lead: Cory Neilsen  
-Miscellaneous: Benjamin Shaw
+Miscellaneous: Benjamin Shaw  
 
 | Milestone | Target Date | Owner | Definition Of Done | Status (NS/IP/D) | Link |
 | :---- | :---- | :---- | :---- | :---- | :---- |
