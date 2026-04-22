@@ -33,7 +33,7 @@ public class Player {
     public int decideDistance(int[] dice) {
         boolean doubles = (dice[0] == dice[1]);
         int distance = (dice[0] + dice[1]);
-        if(position.name == "Jail") {
+        if(position.getName() == "Jail") {
             boolean escapedJail = tryEscapeJail(doubles);
             if(escapedJail) {
                 return distance;
