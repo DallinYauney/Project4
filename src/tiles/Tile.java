@@ -3,31 +3,46 @@ package tiles;
 import main.Player;
 
 public class Tile {
-    public String name;
-    public int visitCounter;
-    public Tile previous;
-    public Tile next;
-    public String nextTitle;
+    private String name;
+    protected int visitCounter;
+    private Tile previousTile;
+    private Tile nextTile;
+    private String nextTitleName;
 
     public Tile(String name) {
         this.name = name;
         visitCounter = 0;
     }
 
-    /**
-     * not sure if this'll be useful.
-     * 
-     * helper function to set the order of two adjacent
-     * cards relative to each other.
-     * @param before the card that comes first
-     * @param after the card that comes last
-     */
-    public static void setOrder(Tile before, Tile after) {
-        before.next = after;
-        after.previous = before;
-    }
+    public int getVisitCounter() {
+		return visitCounter;
+	}
 
-    /**
+	public void setVisitCounter(int visitCounter) {
+		this.visitCounter = visitCounter;
+	}
+
+	public Tile getPreviousTile() {
+		return previousTile;
+	}
+
+	public void setPreviousTile(Tile previousTile) {
+		this.previousTile = previousTile;
+	}
+
+	public Tile getNextTile() {
+		return nextTile;
+	}
+
+	public void setNextTile(Tile nextTile) {
+		this.nextTile = nextTile;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	/**
      * called when the player lands on this tile
      * (useful for deck tiles and "Go To Jail")
      * @param player the player who landed on this tile

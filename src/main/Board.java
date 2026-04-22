@@ -1,16 +1,24 @@
 package main;
 
+import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.Random;
 
+import tiles.ChanceTile;
+import tiles.CommunityChestTile;
+import tiles.GoToJailTile;
 import tiles.Tile;
+import java.util.Scanner;
 
 public class Board {
-    Tile jail;
+    static Tile jail;
+    static Tile go;
     Player player;
     Random random; // likes to be made once & used many times
     int timesSped;
 
     public static void main(String[] args) {
+    	buildBoardTiles();
         int[] roundLengths = {
             1_000,
             10_000,
@@ -95,7 +103,7 @@ public class Board {
         player.position.action(player);
 
         // 4. increment tile counter
-        player.position.visitCounter++;
+        player.position.setVisitCounter(player.position.getVisitCounter() + 1);
     }
 
     /**
@@ -115,8 +123,8 @@ public class Board {
      */
     public static void movePlayerTo(Player player, String tileName) {
         do {
-            player.position = player.position.next;
-        } while(player.position.name != tileName);
+            player.position = player.position.getNextTile();
+        } while(player.position.getName() != tileName);
     }
 
     /**
@@ -126,7 +134,7 @@ public class Board {
      */
     private void movePlayerBy(int tiles) {
         for(int i=0; i<tiles; i++) {
-            player.position = player.position.next;
+            player.position = player.position.getNextTile();
         }
     }
 
@@ -152,5 +160,70 @@ public class Board {
         System.out.printf("%s,%d,%s,", jailString, totalRounds, timesSped);
 
         // TODO: print the visitCounter of each tile w/comma between
+    }
+    
+    private static void buildBoardTiles() {
+		try {
+    	System.out.print("Starting Scanner\n");
+    	Scanner scnr = new Scanner(Paths.get("resources/masterTileList.txt"));
+    	
+    	Tile prevTile = go;
+    	Tile currentTile = prevTile;
+    	
+    	if(scnr.hasNextLine()) {// IMPORTANT: "GO" should always be listed in the file first so that it is constructed first as it functions as the head of the linked list
+			go = new Tile(scnr.nextLine());
+			prevTile = go;
+    		
+    	}
+    	
+    	ReadTiles: while(scnr.hasNextLine()) { // Read Tile Names from file and create tile objects accordingly (Skips Jail and Go)
+    		String input = scnr.nextLine();
+    		switch(input) {
+    			case "--": // End of file has been detected. Link tail tile to head tile
+    				break ReadTiles; //Exit While Loop
+    	
+    			case "Community Chest1":
+    			case "Community Chest2":
+    			case "Community Chest3":
+    				currentTile = new CommunityChestTile(input);
+    				break;
+    				
+    			case "Chance1":
+    			case "Chance2":
+    			case "Chance3":
+    				currentTile = new ChanceTile(input);
+    				break;
+
+    			case "Go To Jail":
+    			currentTile = new GoToJailTile(input);
+    				break;
+    				
+    			default:
+        			currentTile = new Tile(input);
+    		}
+			currentTile.setPreviousTile(prevTile);
+			prevTile.setNextTile(currentTile);
+			prevTile = currentTile;
+    	}
+
+		prevTile.setNextTile(go);//Finished building main tiles, Link tail tile with head tile
+		
+    	//Loop through tiles from head to create jail and point to the correct exit spot
+    	currentTile = go;
+    	while(currentTile.getNextTile() != go) { // End loop after arriving back at the start
+    		if(currentTile.getName() == "Just Visiting") { //If the Current Tile is after just visiting 
+    			jail = new Tile("Jail");
+    			jail.setNextTile(currentTile.getNextTile());
+    			break;
+    		}
+    		currentTile = currentTile.getNextTile(); //Continue Loop
+    		
+    	}
+    	scnr.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	
     }
 }
