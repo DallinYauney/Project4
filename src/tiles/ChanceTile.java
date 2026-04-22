@@ -1,6 +1,7 @@
 package tiles;
 
-import main.Player;
+import main.Board;
+import main.Board.GameDecks;
 
 public class ChanceTile extends Tile {
 	
@@ -12,7 +13,7 @@ public class ChanceTile extends Tile {
      * (useful for deck tiles and "Go To Jail")
      * @param player the player who landed on this tile
      */
-    public void action(Player player) {
-        // nothing by default
+    public void action(Board board) {
+    	board.drawFromDeck(GameDecks.Chance);
     }
 }
