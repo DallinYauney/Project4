@@ -62,6 +62,8 @@ public class Board {
         int roundNum = 1;
         this.player = player;
         random = new Random();
+        buildBoardTiles();
+        this.player.position = go;
 
         // TODO: initialize tiles & set this.jail
         // TODO: set player to be on "Go"
