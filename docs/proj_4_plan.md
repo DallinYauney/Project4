@@ -17,10 +17,10 @@ Miscellaneous: Benjamin Shaw
 | :---- | :---- | :---- | :---- | :---- | :---- |
 | Set Up Repository | 4/13/2026 | Dallin | Repository Accessible to All Team and Instructor | D | [Commit](https://github.com/DallinYauney/Project4/commit/47ef50c75f9e09d442af6c386029f5b0c19073cb) |
 | Project Plan Skeleton | 4/13/2026 | Cory | Start of project plan w/ tasks and potential due dates but no assignments. | D | [Commit](https://github.com/DallinYauney/Project4/commit/7b2ae158084f20374aa3936add084f6631e9472d) |
-| Complete Project Plan | 4/15/2026 | Team | Full plan outlining roles and task assignments foreseen at this point in the project | NS |  |
-| Project Scope | 4/24/2026 | Dallin | Complete Project Scope Document | NS |  |
-| Design Notes | 4/24/2026 | Cory & Dallin | Complete Design Notes | S |  |
-| Checkpoint Submission | 4/24/2026 | Cory | Submit repo URL with instructor access, current project plan, and 2 completed design artifacts | NS |  |
+| Complete Project Plan | 4/15/2026 | Team | Full plan outlining roles and task assignments foreseen at this point in the project | IP |  |
+| Project Scope | 4/24/2026 | Dallin | Complete Project Scope Document | D |  |
+| Design Notes | 4/24/2026 | Cory & Dallin | Complete Design Notes | D |  |
+| Checkpoint Submission | 4/24/2026 | Dallin | Submit repo URL with instructor access, current project plan, and 2 completed design artifacts | D |  |
 | P1: Track # of moves | 4/19/2026 | Dallin | Board Object Has A Counter That Increments After Every Turn | D |  |
 | P1: Tile Information | 4/26/2026 | Spencer | Generate An Array of Tile Objects From File(s) Containing Tile Information | NS |  |
 | P1: Card Decks | 4/19/2026 | Dallin | 4 Total ArrayLists for Community Chest and Chance Draw and Discard Piles | D |  |
