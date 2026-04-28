@@ -21,6 +21,7 @@ public class Board {
     int timesSped;
 
     public static void main(String[] args) {
+    	buildBoardTiles();
         int[] roundLengths = {
             1_000,
             10_000,
