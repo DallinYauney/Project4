@@ -4,9 +4,12 @@ import java.util.ArrayList;
 
 import main.Player;
 
+/**
+ * Provides base functionality for monopoly cards
+ */
 public class Card {
     String name;
-
+    
     public Card(String name) {
         this.name = name;
     }

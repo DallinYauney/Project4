@@ -8,7 +8,7 @@ import tiles.Tile;
 public class Player {
     private ArrayList<JailCard> jailCards;
     boolean escapesJailStrat;
-    Tile position;
+    public Tile position;
     private int turnsInJail;
     int turnsSpeeding;
 

@@ -1,18 +1,30 @@
 package tiles;
 
 import main.Board;
-import main.Player;
 
+/**
+ * Serves as a space on a monopoly board. Contains some basic info about the tile and performs an action provided a board
+ * @author Spencer
+ */
 public class Tile {
     private String name;
     protected int visitCounter;
     private Tile previousTile;
     private Tile nextTile;
-    private String nextTitleName;
+    private boolean isUtil;
+    private boolean isRailroad;
 
     public Tile(String name) {
         this.name = name;
         visitCounter = 0;
+        this.setIsUtil(false);
+        this.setIsRailroad(false);
+    }
+    public Tile(String name, boolean util, boolean railRoad) {
+        this.name = name;
+        visitCounter = 0;
+        this.setIsUtil(util);
+        this.setIsRailroad(railRoad);
     }
 
     public int getVisitCounter() {
@@ -41,6 +53,22 @@ public class Tile {
 
 	public String getName() {
 		return name;
+	}
+
+	public boolean getIsUtil() {
+		return isUtil;
+	}
+
+	public void setIsUtil(boolean isUtil) {
+		this.isUtil = isUtil;
+	}
+
+	public boolean getIsRailroad() {
+		return isRailroad;
+	}
+
+	public void setIsRailroad(boolean isRailroad) {
+		this.isRailroad = isRailroad;
 	}
 
 	/**
