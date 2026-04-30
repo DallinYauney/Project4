@@ -271,7 +271,7 @@ public class Board {
     			break;
     		}
     	} catch (Exception e) {
-    		// e.printStackTrace();
+    		e.printStackTrace();
     	}
     }
 }
