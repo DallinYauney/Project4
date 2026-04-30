@@ -22,13 +22,13 @@ Miscellaneous: Benjamin Shaw
 | Design Notes | 4/24/2026 | Cory & Dallin | Complete Design Notes | D |  |
 | Checkpoint Submission | 4/24/2026 | Dallin | Submit repo URL with instructor access, current project plan, and 2 completed design artifacts | D |  |
 | P1: Track # of moves | 4/19/2026 | Dallin | Board Object Has A Counter That Increments After Every Turn | D |  |
-| P1: Tile Information | 4/26/2026 | Spencer | Generate An Array of Tile Objects From File(s) Containing Tile Information | NS |  |
+| P1: Tile Information | 4/26/2026 | Spencer | Generate An Array of Tile Objects From File(s) Containing Tile Information | IP |  |
 | P1: Card Decks | 4/19/2026 | Dallin | 4 Total ArrayLists for Community Chest and Chance Draw and Discard Piles | D |  |
 | P2: Roll Dice | 4/19/2026 | Dallin | Generate Two Random Integers Between 1 and 6, Add Them Together, And Move The Player Forward By Sum Spaces. | D |  |
 | P2: Three Doubles = Go To Jail | 4/19/2026 | Dallin | If Doubles Are Rolled Three Times In A Turn, Player Goes To Jail | D |  |
-| P2: Card Information | 4/26/2026 | Ben | Create and Store the Cards in Their Proper Decks | NS |  |
-| P2: Card Functionality | 4/26/2026 | Ben | Drawing A Card Triggers Card Function (Get Out of Jail Goes Into Player Inventory) | NS |  |
-| P2: Go to Jail/Tile Functionality | 4/26/2026 | Spencer | Landing On A Tile Triggers Tile Function | NS |  |
+| P2: Card Information | 4/26/2026 | Ben | Create and Store the Cards in Their Proper Decks | IP |  |
+| P2: Card Functionality | 4/26/2026 | Ben | Drawing A Card Triggers Card Function (Get Out of Jail Goes Into Player Inventory) | IP |  |
+| P2: Go to Jail/Tile Functionality | 4/26/2026 | Spencer | Landing On A Tile Triggers Tile Function | IP |  |
 | P2: Landing Counter | 4/19/2026 | Dallin | Counter In Tile Object That Increments If Player Ends On That Square | D |  |
 | P3: Strategy A (Immediate Exit) | 4/19/2026 | Dallin | When Player Goes To Jail, Leave On 1st Turn | D |  |
 | P3: Strategy B (Try for Doubles) | 4/19/2026 | Dallin | When Player Goes To Jail, Try To Roll Doubles For 3 Turns. If Not Successful, Leave On 4th Turn | D |  |
@@ -39,7 +39,6 @@ Miscellaneous: Benjamin Shaw
 | P5: Do The Strategys Converge To The Same Distribution At n = 1,000,000 | 4/26/2026 | Cory | Written Analysis Of Differences Between The Top 5 For Each Strategy | NS |  |
 | P5: Anomalies: stuck in Jail, card loops, unexpected non-convergence| 4/26/2026 | Cory | Written Notes Pointing Out Anything Unexpected | NS |  |
 | Extra Credit | 4/26/2026 | Cory | Generate a bar chart of landing percentages for n = 1,000,000 for both strategies | NS |  |
-| Team Report | 5/1/2026 | Cory | Well-Formatted Report Addressing All Points Outlined In The Assignment | NS |  |
+| Team Report | 5/1/2026 | Cory | Well-Formatted Report Addressing All Points Outlined In The Assignment | IP |  |
 | Screencast | 5/1/2026 | Cory | Stitch Recorded Video Segments Together | NS |  |
 | Project Submission | 5/1/2026 | Cory | Submit Zipped Repository, Screencast, and Team Report | NS |  |
-
