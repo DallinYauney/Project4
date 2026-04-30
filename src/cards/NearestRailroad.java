@@ -21,7 +21,6 @@ public class NearestRailroad extends Card {
 	 * @parameter player
 	 */
 	public void action(Player player) {
-		// TODO update this
-		Board.movePlayerTo(player, name);
+		Board.movePlayerToNextRailroad(player);
 	}
 }

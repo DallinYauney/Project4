@@ -4,18 +4,12 @@ import java.util.ArrayList;
 
 import main.Player;
 
+/**
+ * Provides base functionality for monopoly cards
+ */
 public class Card {
     String name;
-    //TODO Create cardclasses that extend Card
-    	//MoveToCard.Action -> Call board.movepllayerto(Destination String)
-    	//MoveTo will require a second string that is the destination string that needs to be filled in at construction
     
-    	//JailCard. Action add this card to player.jailcards (Note that dallin is working on changing this functionality so it will be a different object type than current)
-    	
-    	//MoveToNearestRailroad.Action Loop player.position = next position until one of the railroad tiles are found
-    
-    	//MoveBack.acttion Player postion = positioin.prev do this x times.
-
     public Card(String name) {
         this.name = name;
     }
