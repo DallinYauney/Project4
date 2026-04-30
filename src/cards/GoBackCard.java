@@ -20,6 +20,8 @@ public class GoBackCard extends Card {
 	 * @parameter
 	 */
 	public void action(Player player) {
-		Board.movePlayerTo(player, name);
+		for(int i = 0; i < 3; i++) {
+			player.position = player.position.getPreviousTile();
+		}
 	}
 }
