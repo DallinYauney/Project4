@@ -2,6 +2,10 @@ package tiles;
 
 import main.Board;
 
+/**
+ * A tile that when a player arrives at, they are sent to jail
+ * @author Spencer
+ */
 public class GoToJailTile extends Tile {
 	
     public GoToJailTile(String name) {

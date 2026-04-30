@@ -1,8 +1,11 @@
 package tiles;
 
 import main.Board;
-import main.Player;
 
+/**
+ * Serves as a space on a monopoly board. Contains some basic info about the tile and performs an action provided a board
+ * @author Spencer
+ */
 public class Tile {
     private String name;
     protected int visitCounter;

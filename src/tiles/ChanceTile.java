@@ -4,7 +4,12 @@ import main.Board;
 import main.Board.GameDecks;
 
 public class ChanceTile extends Tile {
-	
+
+/**
+ * When landed upon this tile draws a card from the Chance Deck
+ * This could have been created with a parameter of which deck to draw from, but for eliminating ambiguity this class was created
+ * @author Spencer
+ */
     public ChanceTile(String name) {
 		super(name);
 	}

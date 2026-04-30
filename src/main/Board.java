@@ -68,16 +68,6 @@ public class Board {
         buildBoardTiles();
         this.player.position = go;
         
-        ArrayList<Card> chanceCards = new ArrayList<>();
-        chanceCards.add(new Card("Chance 1"));
-        chanceCards.add(new Card("Chance 2"));
-        chanceDeck = new Deck(chanceCards);
-        
-        ArrayList<Card> chestCards = new ArrayList<>();
-        chestCards.add(new Card("Chest 1"));
-        chestCards.add(new Card("Chest 2"));
-        chestDeck = new Deck(chestCards);
-
         while(roundNum <= totalRounds) {
             int[] dice = rollDice();
             takeTurn(dice);
@@ -228,16 +218,16 @@ public class Board {
     		String input = scnr.nextLine();
     		switch(input) {
     			case "--": // End of file has been detected. Link tail tile to head tile
-    				break ReadTiles; //Exit While Loop
+    				break ReadTiles; // Exit While Loop
     	
-    				//This could be replaced with RegEx but for this project it should be fine
+    				// This could be replaced with RegEx but for this project it should be fine
     			case "Community Chest1":
     			case "Community Chest2":
     			case "Community Chest3":
     				currentTile = new CommunityChestTile(input);
     				break;
     				
-    				//This could be replaced with RegEx but for this project it should be fine
+    				// This could be replaced with RegEx but for this project it should be fine
     			case "Chance1":
     			case "Chance2":
     			case "Chance3":
@@ -268,9 +258,9 @@ public class Board {
 			prevTile = currentTile; // Done with this assignment moving the current tile to the previous tile
     	}
 
-		prevTile.setNextTile(go);//Finished building main tiles, Link tail tile with head tile
+		prevTile.setNextTile(go);// Finished building main tiles, Link tail tile with head tile
 		
-    	//Loop through tiles from head to create jail and point to the correct exit spot
+    	// Loop through tiles from head to create jail and point to the correct exit spot
     	currentTile = go;
     	while(currentTile.getNextTile() != go) { // End loop after arriving back at the start
     		if(currentTile.getName().equals("Just Visiting")) { // If the Current Tile is after just visiting 
