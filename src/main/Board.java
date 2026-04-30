@@ -244,7 +244,8 @@ public class Board {
     /**
      * Used to link card and deck functionality to tiles.
      * Depending on the enum selected the board will draw from the specified deck
-     * As tiles do not have direct references to players or decks this allows for the tiles to indicate which decks they activate when a player lands on them
+     * As tiles do not have direct references to players or decks this allows
+     * for the tiles to indicate which decks they activate when a player lands on them
      * @param A value from the GameDeck enum
      * @author Spencer J Peck
      */
