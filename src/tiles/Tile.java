@@ -1,5 +1,6 @@
 package tiles;
 
+import main.Board;
 import main.Player;
 
 public class Tile {
@@ -47,7 +48,7 @@ public class Tile {
      * (useful for deck tiles and "Go To Jail")
      * @param player the player who landed on this tile
      */
-    public void action(Player player) {
+    public void action(Board board) {
         // nothing by default
     }
 }

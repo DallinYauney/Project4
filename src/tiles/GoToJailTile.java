@@ -1,6 +1,6 @@
 package tiles;
 
-import main.Player;
+import main.Board;
 
 public class GoToJailTile extends Tile {
 	
@@ -12,7 +12,7 @@ public class GoToJailTile extends Tile {
      * (useful for deck tiles and "Go To Jail")
      * @param player the player who landed on this tile
      */
-    public void action(Player player) {
-        // nothing by default
+    public void action(Board board) {
+    	board.movePlayerTo(board.jail);
     }
 }

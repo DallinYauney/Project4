@@ -11,8 +11,11 @@ import tiles.Tile;
 import java.util.Scanner;
 
 public class Board {
-    static Tile jail;
-    static Tile go;
+    public Tile jail;
+    Tile go;
+    private Deck chanceDeck;
+    private Deck chestDeck;
+    public enum GameDecks {Chance, CommunityChest};
     Player player;
     Random random; // likes to be made once & used many times
     int timesSped;
@@ -60,6 +63,8 @@ public class Board {
         int roundNum = 1;
         this.player = player;
         random = new Random();
+        buildBoardTiles();
+        this.player.position = go;
 
         // TODO: initialize tiles & set this.jail
         // TODO: set player to be on "Go"
@@ -100,7 +105,7 @@ public class Board {
         }
 
         // 3. do action of current tile
-        player.position.action(player);
+        player.position.action(this);
 
         // 4. increment tile counter
         player.position.setVisitCounter(player.position.getVisitCounter() + 1);
@@ -110,7 +115,7 @@ public class Board {
      * intended for use by Board (jail particularly)
      * @param destination tile for player to be put on
      */
-    private void movePlayerTo(Tile destination) {
+    public void movePlayerTo(Tile destination) {
         player.position = destination;
     }
 
@@ -162,17 +167,25 @@ public class Board {
         // TODO: print the visitCounter of each tile w/comma between
     }
     
-    private static void buildBoardTiles() {
+    /**
+     * Reads in a text file and assigns the names within the text file to tiles.
+     * Certain names that signify a tile requiring specific functionality are filtered for and assigned to related tile objects
+     * By reading in a file the order of the tiles can be easily seen and managed in a separate document outside the codebase.
+     * 
+     * An oddity in the file is that a line with "--" is present. This functions as a breaker for this method so we can store relevant data without reading it in, such as the jail class which exists outside the normal loop
+     * 
+     * @author SpencerJPeck
+     */
+    private void buildBoardTiles() {
 		try {
-    	System.out.print("Starting Scanner\n");
-    	Scanner scnr = new Scanner(Paths.get("resources/masterTileList.txt"));
+    	Scanner scnr = new Scanner(Paths.get("resources/masterTileList.txt")); //Create new scanner based around the master tile list document
     	
-    	Tile prevTile = go;
+    	Tile prevTile = go; //Variables used later in the loop
     	Tile currentTile = prevTile;
     	
     	if(scnr.hasNextLine()) {// IMPORTANT: "GO" should always be listed in the file first so that it is constructed first as it functions as the head of the linked list
-			go = new Tile(scnr.nextLine());
-			prevTile = go;
+			go = new Tile(scnr.nextLine()); //Read in first line
+			prevTile = go; // Done with this assignment moving the current tile to the previous tile
     		
     	}
     	
@@ -182,12 +195,14 @@ public class Board {
     			case "--": // End of file has been detected. Link tail tile to head tile
     				break ReadTiles; //Exit While Loop
     	
+    				//This could be replaced with RegEx but for this project it should be fine
     			case "Community Chest1":
     			case "Community Chest2":
     			case "Community Chest3":
     				currentTile = new CommunityChestTile(input);
     				break;
     				
+    				//This could be replaced with RegEx but for this project it should be fine
     			case "Chance1":
     			case "Chance2":
     			case "Chance3":
@@ -201,9 +216,9 @@ public class Board {
     			default:
         			currentTile = new Tile(input);
     		}
-			currentTile.setPreviousTile(prevTile);
-			prevTile.setNextTile(currentTile);
-			prevTile = currentTile;
+			currentTile.setPreviousTile(prevTile); // Point back to last made tile
+			prevTile.setNextTile(currentTile); // Point from last made tile to this tile
+			prevTile = currentTile; // Done with this assignment moving the current tile to the previous tile
     	}
 
 		prevTile.setNextTile(go);//Finished building main tiles, Link tail tile with head tile
@@ -211,7 +226,7 @@ public class Board {
     	//Loop through tiles from head to create jail and point to the correct exit spot
     	currentTile = go;
     	while(currentTile.getNextTile() != go) { // End loop after arriving back at the start
-    		if(currentTile.getName() == "Just Visiting") { //If the Current Tile is after just visiting 
+    		if(currentTile.getName().equals("Just Visiting")) { // If the Current Tile is after just visiting 
     			jail = new Tile("Jail");
     			jail.setNextTile(currentTile.getNextTile());
     			break;
@@ -221,9 +236,31 @@ public class Board {
     	}
     	scnr.close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
     	
+    }
+
+    /**
+     * Used to link card and deck functionality to tiles.
+     * Depending on the enum selected the board will draw from the specified deck
+     * As tiles do not have direct references to players or decks this allows
+     * for the tiles to indicate which decks they activate when a player lands on them
+     * @param A value from the GameDeck enum
+     * @author Spencer J Peck
+     */
+    public void drawFromDeck(GameDecks deck) {
+    	try {
+    		switch(deck) {
+    		case GameDecks.Chance:
+    			chanceDeck.draw(player);
+    			break;
+    		case GameDecks.CommunityChest:
+    			chestDeck.draw(player);
+    			break;
+    		}
+    	} catch (Exception e) {
+    		e.printStackTrace();
+    	}
     }
 }
