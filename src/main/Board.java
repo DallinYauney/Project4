@@ -2,6 +2,7 @@ package main;
 
 import java.io.IOException;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Random;
 
 import tiles.ChanceTile;
@@ -9,6 +10,8 @@ import tiles.CommunityChestTile;
 import tiles.GoToJailTile;
 import tiles.Tile;
 import java.util.Scanner;
+
+import cards.Card;
 
 public class Board {
     public Tile jail;
@@ -21,7 +24,6 @@ public class Board {
     int timesSped;
 
     public static void main(String[] args) {
-    	buildBoardTiles();
         int[] roundLengths = {
             1_000,
             10_000,
@@ -65,9 +67,16 @@ public class Board {
         random = new Random();
         buildBoardTiles();
         this.player.position = go;
-
-        // TODO: initialize tiles & set this.jail
-        // TODO: set player to be on "Go"
+        
+        ArrayList<Card> chanceCards = new ArrayList<>();
+        chanceCards.add(new Card("Chance 1"));
+        chanceCards.add(new Card("Chance 2"));
+        chanceDeck = new Deck(chanceCards);
+        
+        ArrayList<Card> chestCards = new ArrayList<>();
+        chestCards.add(new Card("Chest 1"));
+        chestCards.add(new Card("Chest 2"));
+        chestDeck = new Deck(chestCards);
 
         while(roundNum <= totalRounds) {
             int[] dice = rollDice();
@@ -130,6 +139,32 @@ public class Board {
         do {
             player.position = player.position.getNextTile();
         } while(player.position.getName() != tileName);
+    }
+    
+    /**
+     * intended for use by cards.
+     * static because cards don't have a reference to the board.
+     * Moves the player to the next utility tile
+     * 
+     * @param player the player to move to the tile.
+     */
+    public static void movePlayerToNextUtil(Player player) {
+        do {
+            player.position = player.position.getNextTile();
+        } while(!player.position.getIsUtil());
+    }
+    
+    /**
+     * intended for use by cards.
+     * static because cards don't have a reference to the board.
+     * Moves the player to the next utility tile
+     * 
+     * @param player the player to move to the tile.
+     */
+    public static void movePlayerToNextRailroad(Player player) {
+        do {
+            player.position = player.position.getNextTile();
+        } while(!player.position.getIsRailroad());
     }
 
     /**
@@ -213,6 +248,18 @@ public class Board {
     			currentTile = new GoToJailTile(input);
     				break;
     				
+    			case"Reading Railroad":
+    			case"Pennsylvania Railroad":
+    			case"B. & O. Railroad":
+    				currentTile = new Tile(input,false,true);
+    				break;
+    				
+    			case"Electric Company":
+    			case"Water Works":
+    				currentTile = new Tile(input,true,false);
+    				
+    				break;
+    				
     			default:
         			currentTile = new Tile(input);
     		}
@@ -252,10 +299,10 @@ public class Board {
     public void drawFromDeck(GameDecks deck) {
     	try {
     		switch(deck) {
-    		case GameDecks.Chance:
+    		case Chance:
     			chanceDeck.draw(player);
     			break;
-    		case GameDecks.CommunityChest:
+    		case CommunityChest:
     			chestDeck.draw(player);
     			break;
     		}
