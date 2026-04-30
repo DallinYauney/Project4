@@ -25,7 +25,6 @@ public class Deck {
     ArrayList<Card> discardPile;
 
     public Deck(String filePath, Board board) throws FileNotFoundException {
-        discardPile = new ArrayList<>();
         Scanner scnr = new Scanner(new File(filePath));
         drawPile = new ArrayList<>();
         discardPile = new ArrayList<>();
