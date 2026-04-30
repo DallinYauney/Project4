@@ -178,7 +178,6 @@ public class Board {
      */
     private void buildBoardTiles() {
 		try {
-    	//System.out.print("Starting Scanner\n");
     	Scanner scnr = new Scanner(Paths.get("resources/masterTileList.txt")); //Create new scanner based around the master tile list document
     	
     	Tile prevTile = go; //Variables used later in the loop
