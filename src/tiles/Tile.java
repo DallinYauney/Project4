@@ -1,5 +1,6 @@
 package tiles;
 
+import main.Board;
 import main.Player;
 
 public class Tile {
@@ -7,11 +8,20 @@ public class Tile {
     protected int visitCounter;
     private Tile previousTile;
     private Tile nextTile;
-    private String nextTitleName;
+    private boolean isUtil;
+    private boolean isRailroad;
 
     public Tile(String name) {
         this.name = name;
         visitCounter = 0;
+        this.setIsUtil(false);
+        this.setIsRailroad(false);
+    }
+    public Tile(String name, boolean util, boolean railRoad) {
+        this.name = name;
+        visitCounter = 0;
+        this.setIsUtil(util);
+        this.setIsRailroad(railRoad);
     }
 
     public int getVisitCounter() {
@@ -42,12 +52,28 @@ public class Tile {
 		return name;
 	}
 
+	public boolean getIsUtil() {
+		return isUtil;
+	}
+
+	public void setIsUtil(boolean isUtil) {
+		this.isUtil = isUtil;
+	}
+
+	public boolean getIsRailroad() {
+		return isRailroad;
+	}
+
+	public void setIsRailroad(boolean isRailroad) {
+		this.isRailroad = isRailroad;
+	}
+
 	/**
      * called when the player lands on this tile
      * (useful for deck tiles and "Go To Jail")
      * @param player the player who landed on this tile
      */
-    public void action(Player player) {
+    public void action(Board board) {
         // nothing by default
     }
 }

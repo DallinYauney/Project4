@@ -1,19 +1,21 @@
 package main;
 
+import java.util.ArrayList;
 import java.util.Queue;
 
 import cards.JailCard;
 import tiles.Tile;
 
 public class Player {
-    private Queue<JailCard> jailCards;
+    private ArrayList<JailCard> jailCards;
     boolean escapesJailStrat;
     Tile position;
     private int turnsInJail;
     int turnsSpeeding;
 
-    Player(boolean escapesJail) {
+    public Player(boolean escapesJail) {
         escapesJailStrat = escapesJail;
+        jailCards = new ArrayList<JailCard>();
         turnsInJail = 0;
     }
 
@@ -45,6 +47,7 @@ public class Player {
 
         // out of jail, so calc speeding & move normal distance
         incrementSpeeding(doubles);
+        // System.out.printf("moving %s squares", distance);
         return distance;
     }
 
@@ -107,9 +110,9 @@ public class Player {
     private boolean tryUseCard() {
         // is there a card to use?
         if(!jailCards.isEmpty()) {
-            JailCard nextCard = jailCards.peek();
+            JailCard nextCard = jailCards.getFirst();
             nextCard.discard(); // send it back to the discard
-            jailCards.remove(); // remove it from *our* list
+            jailCards.removeFirst(); // remove it from *our* list
             return true;
         }
 
