@@ -3,6 +3,11 @@ package tiles;
 import main.Board;
 import main.Board.GameDecks;
 
+/**
+ * When landed upon this tile draws a card from the community Deck
+ * This could have been created with a parameter of which deck to draw from, but for eliminating ambiguity this class was created
+ * @author Spencer
+ */
 public class CommunityChestTile extends Tile {
 	
     public CommunityChestTile(String name) {

@@ -1,7 +1,9 @@
 package main;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Random;
 
 import tiles.ChanceTile;
@@ -9,6 +11,8 @@ import tiles.CommunityChestTile;
 import tiles.GoToJailTile;
 import tiles.Tile;
 import java.util.Scanner;
+
+import cards.Card;
 
 public class Board {
     public Tile jail;
@@ -64,10 +68,15 @@ public class Board {
         random = new Random();
         buildBoardTiles();
         this.player.position = go;
-
-        // TODO: initialize tiles & set this.jail
-        // TODO: set player to be on "Go"
-
+        
+        //Construct Decks
+        try {
+			chanceDeck = new Deck("resources/ChanceDeck.txt",this);
+			chestDeck = new Deck("resources/ChestDeck.txt",this);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+        
         while(roundNum <= totalRounds) {
             int[] dice = rollDice();
             takeTurn(dice);
@@ -128,7 +137,33 @@ public class Board {
     public static void movePlayerTo(Player player, String tileName) {
         do {
             player.position = player.position.getNextTile();
-        } while(player.position.getName() != tileName);
+        } while(!player.position.getName().equals(tileName));
+    }
+    
+    /**
+     * intended for use by cards.
+     * static because cards don't have a reference to the board.
+     * Moves the player to the next utility tile
+     * 
+     * @param player the player to move to the tile.
+     */
+    public static void movePlayerToNextUtil(Player player) {
+        do {
+            player.position = player.position.getNextTile();
+        } while(!player.position.getIsUtil());
+    }
+    
+    /**
+     * intended for use by cards.
+     * static because cards don't have a reference to the board.
+     * Moves the player to the next utility tile
+     * 
+     * @param player the player to move to the tile.
+     */
+    public static void movePlayerToNextRailroad(Player player) {
+        do {
+            player.position = player.position.getNextTile();
+        } while(!player.position.getIsRailroad());
     }
 
     /**
@@ -192,16 +227,16 @@ public class Board {
     		String input = scnr.nextLine();
     		switch(input) {
     			case "--": // End of file has been detected. Link tail tile to head tile
-    				break ReadTiles; //Exit While Loop
+    				break ReadTiles; // Exit While Loop
     	
-    				//This could be replaced with RegEx but for this project it should be fine
+    				// This could be replaced with RegEx but for this project it should be fine
     			case "Community Chest1":
     			case "Community Chest2":
     			case "Community Chest3":
     				currentTile = new CommunityChestTile(input);
     				break;
     				
-    				//This could be replaced with RegEx but for this project it should be fine
+    				// This could be replaced with RegEx but for this project it should be fine
     			case "Chance1":
     			case "Chance2":
     			case "Chance3":
@@ -212,6 +247,18 @@ public class Board {
     			currentTile = new GoToJailTile(input);
     				break;
     				
+    			case"Reading Railroad":
+    			case"Pennsylvania Railroad":
+    			case"B. & O. Railroad":
+    				currentTile = new Tile(input,false,true);
+    				break;
+    				
+    			case"Electric Company":
+    			case"Water Works":
+    				currentTile = new Tile(input,true,false);
+    				
+    				break;
+    				
     			default:
         			currentTile = new Tile(input);
     		}
@@ -220,9 +267,9 @@ public class Board {
 			prevTile = currentTile; // Done with this assignment moving the current tile to the previous tile
     	}
 
-		prevTile.setNextTile(go);//Finished building main tiles, Link tail tile with head tile
+		prevTile.setNextTile(go);// Finished building main tiles, Link tail tile with head tile
 		
-    	//Loop through tiles from head to create jail and point to the correct exit spot
+    	// Loop through tiles from head to create jail and point to the correct exit spot
     	currentTile = go;
     	while(currentTile.getNextTile() != go) { // End loop after arriving back at the start
     		if(currentTile.getName().equals("Just Visiting")) { // If the Current Tile is after just visiting 
@@ -251,10 +298,10 @@ public class Board {
     public void drawFromDeck(GameDecks deck) {
     	try {
     		switch(deck) {
-    		case GameDecks.Chance:
+    		case Chance:
     			chanceDeck.draw(player);
     			break;
-    		case GameDecks.CommunityChest:
+    		case CommunityChest:
     			chestDeck.draw(player);
     			break;
     		}
