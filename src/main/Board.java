@@ -216,7 +216,7 @@ public class Board {
     			default:
         			currentTile = new Tile(input);
     		}
-			currentTile.setPreviousTile(prevTile); //Point back to last made tile
+			currentTile.setPreviousTile(prevTile); // Point back to last made tile
 			prevTile.setNextTile(currentTile); // Point from last made tile to this tile
 			prevTile = currentTile; // Done with this assignment moving the current tile to the previous tile
     	}
