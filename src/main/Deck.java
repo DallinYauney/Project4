@@ -1,27 +1,62 @@
 package main;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Scanner;
 
 import cards.Card;
+import cards.GoBackCard;
+import cards.JailCard;
+import cards.MoveToCard;
+import cards.NearestRailroad;
+import cards.NearestUtility;
 
+/**
+ * Deck is the basic deck that is in the Monopoly board game
+ * it has the constructor that makes a deck using an ArrayList
+ * 
+ * @author Benjamin Shaw & Spencer Peck
+ */
 public class Deck {
     ArrayList<Card> drawPile;
     ArrayList<Card> discardPile;
 
-    public Deck(ArrayList<Card> cards) {
-        drawPile = cards;
+    public Deck(String filePath) throws FileNotFoundException {
         discardPile = new ArrayList<>();
-        //TODO Change this constructor to accept a file path to read in a chance file or community chest file
-        //TODO Create method to read in strings
-        	//This is the new method pseduoCode
-        	//Read in next line
-        	//If matches a card text that is a get out of jail create jail card
-        	//if matches card text that is a move to location create a new MoveToCard with an extra parameter which is destination
-        	//if go to nearest railroad/utility create new nearestRailroad/Utillity Card
-        	//If go back three tiles create new gobackCard
-        	//If not match other requirements create new Card (aka no functionality required)
+        Scanner scnr = new Scanner(new File(filePath));
+        
+        
+        while (scnr.hasNextLine()) {
+            String cardName = scnr.nextLine();
+            
+            if (cardName == "go to jail") 
+            	drawPile.add(new JailCard());
+            
+             else if (cardName.equals("move to"))
+            	 drawPile.add(new MoveToCard(cardName));
+            
+             else if (cardName.equals("go to the nearest railroad"))
+            	 drawPile.add(new NearestRailroad(cardName));
+            
+             else if (cardName.equals("go to the nearest utility"))
+            	 drawPile.add(new NearestUtility(cardName));
+            
+             else if (cardName.equals("go back three spaces"))
+            	 drawPile.add(new GoBackCard(cardName));
+            
+             else
+            	 drawPile.add(new Card(cardName));
+            
+            
+        }
+        
+        scnr.close();
     }
+    
+    
+    
 
     /**
      * draw the top card & activate it
