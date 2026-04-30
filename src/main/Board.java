@@ -150,9 +150,14 @@ public class Board {
         Board dummy = new Board(new Player(false), 0);
 
         // print extra column headers to identify each run
-        System.out.printf("Strategy,Turns,TimesSped,");
+        System.out.printf("Strategy,Turns,TimesSped,Jail,");
 
-        // TODO: loop through tiles, printing each name w/comma between
+        do {
+            System.out.printf("%s,", dummy.player.position.getName());
+            dummy.movePlayerBy(1);
+        } while(!dummy.player.position.getName().equals("Boardwalk"));
+
+        System.out.println("Boardwalk");
     }
 
     /**
@@ -160,10 +165,17 @@ public class Board {
      * for each tile in a CSV format to terminal.
      */
     private void printStats(boolean escapesJail, int totalRounds) {
+        if(totalRounds == 0) return;
         String jailString = escapesJail ? "Escapes" : "Waits";
-        System.out.printf("%s,%d,%s,", jailString, totalRounds, timesSped);
+        System.out.printf("%s,%d,%s,%d,", jailString, totalRounds, timesSped, jail.getVisitCounter());
 
-        // TODO: print the visitCounter of each tile w/comma between
+        Tile currentTile = go;
+        do {
+            System.out.printf("%d,", currentTile.getVisitCounter());
+            currentTile = currentTile.getNextTile();
+        } while(!currentTile.getName().equals("Boardwalk"));
+
+        System.out.println(currentTile.getVisitCounter());
     }
     
     /**
@@ -259,7 +271,7 @@ public class Board {
     			break;
     		}
     	} catch (Exception e) {
-    		e.printStackTrace();
+    		// e.printStackTrace();
     	}
     }
 }
