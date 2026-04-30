@@ -226,7 +226,7 @@ public class Board {
     	//Loop through tiles from head to create jail and point to the correct exit spot
     	currentTile = go;
     	while(currentTile.getNextTile() != go) { // End loop after arriving back at the start
-    		if(currentTile.getName().equals("Just Visiting")) { //If the Current Tile is after just visiting 
+    		if(currentTile.getName().equals("Just Visiting")) { // If the Current Tile is after just visiting 
     			jail = new Tile("Jail");
     			jail.setNextTile(currentTile.getNextTile());
     			break;
