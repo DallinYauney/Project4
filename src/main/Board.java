@@ -1,5 +1,6 @@
 package main;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -68,6 +69,14 @@ public class Board {
         buildBoardTiles();
         this.player.position = go;
         
+        //Construct Decks
+        try {
+			chanceDeck = new Deck("resources/ChanceDeck.txt",this);
+			chestDeck = new Deck("resources/ChestDeck.txt",this);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+        
         while(roundNum <= totalRounds) {
             int[] dice = rollDice();
             takeTurn(dice);
@@ -128,7 +137,7 @@ public class Board {
     public static void movePlayerTo(Player player, String tileName) {
         do {
             player.position = player.position.getNextTile();
-        } while(player.position.getName() != tileName);
+        } while(!player.position.getName().equals(tileName));
     }
     
     /**

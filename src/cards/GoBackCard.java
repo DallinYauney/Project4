@@ -1,6 +1,5 @@
 package cards;
 
-import main.Board;
 import main.Player;
 
 /**

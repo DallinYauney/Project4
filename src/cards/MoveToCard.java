@@ -10,9 +10,11 @@ import main.Player;
  * @author Benjamin Shaw
  */
 public class MoveToCard extends Card {
+	private String destination;
 	
-	public MoveToCard(String name) {
+	public MoveToCard(String name, String destination) {
 		super(name);
+		this.destination = destination;
 	}
 	
 	/**
@@ -21,7 +23,7 @@ public class MoveToCard extends Card {
 	 * @param player
 	 * @param Destination
 	 */
-	public void action(Player player, String Destination) {
-		Board.movePlayerTo(player, Destination);
+	public void action(Player player) {
+		Board.movePlayerTo(player, destination);
 	}
 }
