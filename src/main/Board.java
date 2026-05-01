@@ -16,11 +16,11 @@ import cards.Card;
 
 public class Board {
     public Tile jail;
-    Tile go;
+    public Tile go;
     private Deck chanceDeck;
     private Deck chestDeck;
     public enum GameDecks {Chance, CommunityChest};
-    Player player;
+    public Player player;
     Random random; // likes to be made once & used many times
     int timesSped;
 

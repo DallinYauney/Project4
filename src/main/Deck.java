@@ -21,8 +21,8 @@ import cards.NearestUtility;
  * @author Benjamin Shaw & Spencer Peck
  */
 public class Deck {
-    ArrayList<Card> drawPile;
-    ArrayList<Card> discardPile;
+    public ArrayList<Card> drawPile;
+    public ArrayList<Card> discardPile;
 
     public Deck(String filePath, Board board) throws FileNotFoundException {
         Scanner scnr = new Scanner(new File(filePath));
@@ -33,7 +33,7 @@ public class Deck {
         while (scnr.hasNextLine()) {
             String cardName = scnr.nextLine();
             
-            if (cardName == "Get Out of Jail Free") 
+            if (cardName.equals("Get Out of Jail Free"))
             	drawPile.add(new JailCard());
             
             
