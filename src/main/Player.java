@@ -98,6 +98,7 @@ public class Player {
                 return false; // not 3 turns yet, keep up hope
             }
 
+            turnsInJail = 0;
             return true; // abandon hope and pay bail
         }
     }
