@@ -20,3 +20,5 @@ This project's entry point is the board, located in `src/main/Board.java`. We ho
 The project produces data in the form of a CSV, but it only prints it to the terminal. To get the data in a file to be processed by a spreadsheet program such as Excel, simply copy it into the file manually (Ctrl + Shift + C for most terminals), or use your shell's redirection feature. In Bash, this looks like `java src/main/Board.java > resource/output.csv`.
 
 We even have a bash script to this effect, which can be run (using bash) with `./output.sh`. This is how we generated the output we have now.
+
+Downloading the processing.xlsx file from Google Sheets causes a loss of some functionality. For full functionality, visit this [link](https://docs.google.com/spreadsheets/d/1gBHTmmqkg5Y-qhiWRqSWFIGelMlmJH6QFt3ctKH87t0/edit?usp=sharing) and make a copy of the processing sheet.
