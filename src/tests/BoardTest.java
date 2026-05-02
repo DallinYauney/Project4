@@ -11,6 +11,12 @@ import tiles.CommunityChestTile;
 import tiles.GoToJailTile;
 import tiles.Tile;
 
+/**
+ * Group 1 Cory Neilsen, Spencer Peck, Benjamin Shaw, Dallin Yauney CS 2430-002
+ * Project 4: Monopoly Simulation – Spring 2026
+ *
+ * @author Spencer Peck
+ */
 class BoardTest {
 
     @Test

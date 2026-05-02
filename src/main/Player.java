@@ -5,6 +5,14 @@ import java.util.ArrayList;
 import cards.JailCard;
 import tiles.Tile;
 
+/**
+ * Group 1 Cory Neilsen, Spencer Peck, Benjamin Shaw, Dallin Yauney CS 2430-002
+ * Project 4: Monopoly Simulation – Spring 2026
+ *
+ * The player class is used to determine information about player position and other statistics.
+ * 
+ * @author Dallin Yauney
+ */
 public class Player {
     private ArrayList<JailCard> jailCards;
     boolean escapesJailStrat;

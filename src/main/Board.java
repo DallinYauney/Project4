@@ -14,6 +14,14 @@ import java.util.Scanner;
 
 import cards.Card;
 
+/**
+ * Group 1 Cory Neilsen, Spencer Peck, Benjamin Shaw, Dallin Yauney CS 2430-002
+ * Project 4: Monopoly Simulation – Spring 2026
+ * 
+ * The Board Object is the primary driver of the Monopoly simulation.
+ *
+ * @author Dallin Yauney
+ */
 public class Board {
     public Tile jail;
     public Tile go;

@@ -5,7 +5,12 @@ import java.util.ArrayList;
 import main.Player;
 
 /**
+ * Group 1 Cory Neilsen, Spencer Peck, Benjamin Shaw, Dallin Yauney CS 2430-002
+ * Project 4: Monopoly Simulation – Spring 2026
+ *
  * Provides base functionality for monopoly cards
+ * 
+ * @author Dallin Yauney
  */
 public class Card {
     String name;

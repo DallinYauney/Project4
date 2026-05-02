@@ -15,6 +15,9 @@ import cards.NearestRailroad;
 import cards.NearestUtility;
 
 /**
+ * Group 1 Cory Neilsen, Spencer Peck, Benjamin Shaw, Dallin Yauney CS 2430-002
+ * Project 4: Monopoly Simulation – Spring 2026
+ *
  * Deck is the basic deck that is in the Monopoly board game
  * it has the constructor that makes a deck using an ArrayList
  * 

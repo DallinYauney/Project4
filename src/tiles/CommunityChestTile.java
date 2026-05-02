@@ -4,9 +4,13 @@ import main.Board;
 import main.Board.GameDecks;
 
 /**
+ * Group 1 Cory Neilsen, Spencer Peck, Benjamin Shaw, Dallin Yauney CS 2430-002
+ * Project 4: Monopoly Simulation – Spring 2026
+ * 
  * When landed upon this tile draws a card from the community Deck
  * This could have been created with a parameter of which deck to draw from, but for eliminating ambiguity this class was created
- * @author Spencer
+ * 
+ * @author Spencer Peck
  */
 public class CommunityChestTile extends Tile {
 	
