@@ -65,6 +65,8 @@ public class Player {
     private void incrementSpeeding(boolean doubles) {
         if(doubles) {
             turnsSpeeding++;
+        } else {
+            turnsSpeeding = 0;
         }
     }
 
