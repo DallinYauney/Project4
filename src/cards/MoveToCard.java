@@ -4,6 +4,9 @@ import main.Board;
 import main.Player;
 
 /**
+ * Group 1 Cory Neilsen, Spencer Peck, Benjamin Shaw, Dallin Yauney CS 2430-002
+ * Project 4: Monopoly Simulation – Spring 2026
+ *
  * MoveToCard is the move to card that is represented in the deck to move the player to a given
  * destination
  * 

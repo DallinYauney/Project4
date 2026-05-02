@@ -3,8 +3,12 @@ package tiles;
 import main.Board;
 
 /**
+ * Group 1 Cory Neilsen, Spencer Peck, Benjamin Shaw, Dallin Yauney CS 2430-002
+ * Project 4: Monopoly Simulation – Spring 2026
+ * 
  * Serves as a space on a monopoly board. Contains some basic info about the tile and performs an action provided a board
- * @author Spencer
+ * 
+ * @author Spencer Peck
  */
 public class Tile {
     private String name;
