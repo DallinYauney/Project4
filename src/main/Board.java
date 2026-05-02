@@ -3,7 +3,6 @@ package main;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.Random;
 
 import tiles.ChanceTile;
@@ -11,8 +10,6 @@ import tiles.CommunityChestTile;
 import tiles.GoToJailTile;
 import tiles.Tile;
 import java.util.Scanner;
-
-import cards.Card;
 
 /**
  * Group 1 Cory Neilsen, Spencer Peck, Benjamin Shaw, Dallin Yauney CS 2430-002

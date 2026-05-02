@@ -32,13 +32,11 @@ public class Deck {
         drawPile = new ArrayList<>();
         discardPile = new ArrayList<>();
         
-        
         while (scnr.hasNextLine()) {
             String cardName = scnr.nextLine();
             
             if (cardName.equals("Get Out of Jail Free"))
             	drawPile.add(new JailCard());
-            
             
              else if (cardName.equals("Advance to Boardwalk"))
             	 drawPile.add(new MoveToCard(cardName,"Boardwalk"));
@@ -69,16 +67,11 @@ public class Deck {
             
              else
             	 drawPile.add(new Card(cardName));
-            
-            
         }
         
         scnr.close();
     }
     
-    
-    
-
     /**
      * draw the top card & activate it
      * @param player player who drew the card

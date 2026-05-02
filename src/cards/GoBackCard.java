@@ -11,7 +11,6 @@ import main.Player;
  * @author Benjamin Shaw
  */
 public class GoBackCard extends Card {
-	
 	public GoBackCard(String name) {
 		super(name);
 	}
